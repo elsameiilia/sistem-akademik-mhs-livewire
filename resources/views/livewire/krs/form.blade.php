@@ -11,7 +11,7 @@
             <div class="flex flex-wrap justify-between items-center mb-6 gap-4">
                 <div>
                     <label for="semester" class="block text-sm font-medium text-gray-700">Pilih Semester</label>
-                    <select wire:model.live="semester" id="semester" class="mt-1 w-48 border-gray-300 rounded-lg shadow-sm">
+                    <select dusk="semester" wire:model.live="semester" id="semester" class="mt-1 w-48 border-gray-300 rounded-lg shadow-sm">
                         <option value="">-- Semester --</option>
                         @for ($i = 1; $i <= 8; $i++)
                             <option value="{{ $i }}">Semester {{ $i }}</option>
@@ -51,7 +51,7 @@
                             @forelse($semuaMatakuliah as $matkul)
                                 <tr class="hover:bg-gray-50 border-b">
                                     <td class="px-6 py-4">
-                                        <input type="checkbox" 
+                                        <input dusk="matakuliah-{{ $matkul->id }}" type="checkbox" 
                                                wire:model="pilihanMatakuliah.{{ $matkul->id }}"
                                                class="rounded"
                                                @if($totalSks >= 24 && !$pilihanMatakuliah[$matkul->id]) disabled @endif>
@@ -69,7 +69,7 @@
                     </table>
                 </div>
                 <div class="mt-6 text-right">
-                    <button type="submit" class="px-6 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                    <button dusk="btn-simpan-krs" type="submit" class="px-6 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700">
                         Simpan KRS
                     </button>
                 </div>

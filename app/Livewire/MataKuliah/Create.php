@@ -19,6 +19,8 @@ class Create extends Component
             'nama_matakuliah' => $this->nama_matakuliah,
             'sks' => $this->sks
         ]);
+
+        session()->flash('sukses', 'Data mata kuliah berhasil ditambahkan.');
         return $this->redirectRoute('mata-kuliah.index', navigate: true);
     }
     public function render()

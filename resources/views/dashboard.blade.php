@@ -1,4 +1,10 @@
 <div>
+    @if (session('sukses'))
+        <div class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+            {{ session('sukses') }}
+        </div>
+    @endif
+
     <div class="mb-8">
         <h1 class="text-2xl font-bold text-gray-800">Selamat Datang, {{ auth()->user()->name }}!</h1>
         <p class="text-gray-600">Anda login sebagai {{ auth()->user()->role->value }}.</p>

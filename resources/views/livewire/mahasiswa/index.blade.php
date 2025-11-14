@@ -1,9 +1,16 @@
 <div>
     <div class="w-full max-w-7xl mx-auto p-6 bg-white shadow-lg rounded-xl">
+        
+        @if (session('sukses'))
+            <div class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                {{ session('sukses') }}
+            </div>
+        @endif
+
         <div class="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <h2 class="text-2xl font-bold text-gray-800">Daftar Mahasiswa</h2>
             @if (auth()->user()->role == \App\Enums\Role::Admin)
-                <a href="{{ route('mahasiswa.create') }}" wire:navigate class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg shadow-sm hover:bg-blue-700">
+                <a dusk="btn-add-mhs" href="{{ route('mahasiswa.create') }}" wire:navigate class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg shadow-sm hover:bg-blue-700">
                     Tambah Data Mahasiswa
                 </a>
             @endif
@@ -44,8 +51,8 @@
                             <td class="px-6 py-4 whitespace-nowrap text-center font-medium">{{ $mhs->total_sks ?? 0 }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-center">
                                 @if (auth()->user()->role == \App\Enums\Role::Admin)
-                                    <a href="{{ route('mahasiswa.edit', $mhs->id) }}" wire:navigate class="font-medium text-blue-600 hover:text-blue-800">Edit</a>
-                                    <button wire:click="destroy({{ $mhs->id }})" class="ml-4 font-medium text-red-600 hover:text-red-800" wire:confirm="Anda yakin?">Hapus</button>
+                                    <a dusk="edit-mhs-{{ $mhs->id }}" href="{{ route('mahasiswa.edit', $mhs->id) }}" wire:navigate class="font-medium text-blue-600 hover:text-blue-800">Edit</a>
+                                    <button dusk="delete-mhs-{{ $mhs->id }}" wire:click="destroy({{ $mhs->id }})" class="ml-4 font-medium text-red-600 hover:text-red-800" wire:confirm="Anda yakin?">Hapus</button>
                                 @else
                                     <span class="text-gray-400">--</span>
                                 @endif

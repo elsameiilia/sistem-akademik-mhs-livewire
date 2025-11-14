@@ -10,21 +10,21 @@
             <div class="space-y-6">
                 <div>
                     <label for="nim" class="block text-sm font-medium text-gray-700 mb-1">NIM</label>
-                    <input type="text" id="nim" wire:model.lazy="nim" 
+                    <input dusk="nim" type="text" id="nim" wire:model.lazy="nim" 
                            class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 p-2 focus:ring-blue-500 transition @error('nim') border-red-500 @enderror" 
                            placeholder="Contoh: H1D023001">
                     @error('nim') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                 </div>
                 <div>
                     <label for="nama" class="block text-sm font-medium text-gray-700 mb-1">Nama Mahasiswa</label>
-                    <input type="text" id="nama" wire:model.lazy="nama" 
+                    <input dusk="nama" type="text" id="nama" wire:model.lazy="nama" 
                            class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 p-2 focus:ring-blue-500 transition @error('nama') border-red-500 @enderror"
                            placeholder="Contoh: Jenderal Sudirman">
                     @error('nama') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                 </div>
                 <div>
                     <label for="prodi_id" class="block text-sm font-medium text-gray-700 mb-1">ID Prodi</label>
-                    <select id="prodi_id" wire:model="prodi_id" class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 p-2 focus:ring-blue-500 transition @error('prodi_id') border-red-500 @enderror">
+                    <select dusk="prodi_id" id="prodi_id" wire:model="prodi_id" class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 p-2 focus:ring-blue-500 transition @error('prodi_id') border-red-500 @enderror">
                         <option value="">Pilih Prodi</option>
                         @foreach($semuaProdi as $prodi)
                             <option value="{{ $prodi->id }}">{{ $prodi->nama_prodi }}</option>
@@ -37,7 +37,7 @@
                 <a href="{{ route('mahasiswa.index') }}" wire:navigate class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition">
                     Batal
                 </a>
-                <button type="submit" 
+                <button type="submit" dusk="btn-submit-mhs"
                         class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition"
                         wire:loading.attr="disabled" wire:loading.class="opacity-75">
                     

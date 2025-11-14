@@ -20,7 +20,7 @@ class Create extends Component
             'nama' => $this->nama,
             'prodi_id' => $this->prodi_id
         ]);
-        session()->flash('sukses', 'Data prodi berhasil ditambahkan.');
+        session()->flash('sukses', 'Data mahasiswa berhasil ditambahkan.');
         return $this->redirectRoute('mahasiswa.index', navigate: true);
     }
     public function render()

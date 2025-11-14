@@ -10,13 +10,13 @@
             <div class="space-y-6">
                 <div>
                     <label for="nama_prodi" class="block text-sm font-medium text-gray-700 mb-1">Nama Prodi</label>
-                    <input type="text" id="nama_prodi" wire:model.lazy="nama_prodi" 
+                    <input dusk="nama_prodi" type="text" id="nama_prodi" wire:model.lazy="nama_prodi" 
                            class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 p-2 focus:ring-blue-500 transition @error('nama_prodi') border-red-500 @enderror">
                     @error('nama_prodi') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                 </div>
                 <div>
                     <label for="fakultas_id" class="block text-sm font-medium text-gray-700 mb-1">Fakultas</label>
-                    <select id="fakultas_id" wire:model="fakultas_id" class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 p-2 focus:ring-blue-500 transition @error('fakultas_id') border-red-500 @enderror">
+                    <select dusk="fakultas_id" id="fakultas_id" wire:model="fakultas_id" class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 p-2 focus:ring-blue-500 transition @error('fakultas_id') border-red-500 @enderror">
                         <option value="">Pilih Fakultas</option>
                         @foreach($semuaFakultas as $fakultas)
                             <option value="{{ $fakultas->id }}">{{ $fakultas->nama_fakultas }}</option>
@@ -29,7 +29,7 @@
                 <a href="{{ route('prodi.index') }}" wire:navigate class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition">
                     Batal
                 </a>
-                    <button type="submit" 
+                    <button type="submit" dusk="btn-update-prodi"
                         class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition"
                         wire:loading.attr="disabled" wire:loading.class="opacity-75">
                     <svg wire:loading wire:target="update" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

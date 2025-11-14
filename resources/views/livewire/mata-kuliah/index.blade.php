@@ -1,6 +1,12 @@
 <div>
     <div class="w-full max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-xl">
         
+        @if (session('sukses'))
+            <div class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                {{ session('sukses') }}
+            </div>
+        @endif
+
         <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <h2 class="text-xl font-bold text-gray-800">Daftar Mata Kuliah</h2>
             <!-- <div class="relative w-full sm:w-1/3">
@@ -12,7 +18,7 @@
                 <input type="text" wire:model.debounce.500ms="search" class="border border-gray-300 rounded-lg pl-10 pr-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition" placeholder="Cari mata kuliah...">
             </div> -->
             @if (auth()->user()->role == \App\Enums\Role::Admin)
-                <a href="{{ route('mata-kuliah.create') }}" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+                <a dusk="btn-add-mk" href="{{ route('mata-kuliah.create') }}" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
                     Tambah Mata Kuliah
                     <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -58,10 +64,10 @@
                             <td class="px-6 py-4 whitespace-nowrap font-medium text-center">{{ $matkul->sks }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-center">
                             @if (auth()->user()->role == \App\Enums\Role::Admin)
-                                <a href="{{ route('mata-kuliah.edit', $matkul->id) }}" class="text-blue-600 hover:text-blue-800 transition-colors">
+                                <a dusk="edit-mk-{{ $matkul->id }}" href="{{ route('mata-kuliah.edit', $matkul->id) }}" class="text-blue-600 hover:text-blue-800 transition-colors">
                                     Edit
                                 </a>
-                                <button wire:click="destroy({{ $matkul->id }})" class="ml-4 text-red-600 hover:text-red-800 transition-colors" wire:confirm="Apakah anda yakin ingin menghapus mata kuliah ini?">
+                                <button dusk="delete-mk-{{ $matkul->id }}" wire:click="destroy({{ $matkul->id }})" class="ml-4 text-red-600 hover:text-red-800 transition-colors" wire:confirm="Apakah anda yakin ingin menghapus mata kuliah ini?">
                                     Hapus
                                 </button>
                             @else
